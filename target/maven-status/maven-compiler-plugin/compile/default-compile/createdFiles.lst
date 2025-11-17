@@ -1,11 +1,11 @@
-com\frutolandia\service\ProductService.class
 com\frutolandia\controller\ProductController.class
-com\frutolandia\model\User.class
-com\frutolandia\model\Product.class
 com\frutolandia\FrutollandiaBackendApplication.class
-com\frutolandia\repository\ProductRepository.class
-com\frutolandia\repository\UserRepository.class
 com\frutolandia\service\UserService.class
 com\frutolandia\config\CorsConfig.class
 com\frutolandia\model\User$Role.class
 com\frutolandia\controller\UserController.class
+com\frutolandia\service\ProductService.class
+com\frutolandia\model\User.class
+com\frutolandia\model\Product.class
+com\frutolandia\repository\ProductRepository.class
+com\frutolandia\repository\UserRepository.class
