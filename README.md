@@ -2,6 +2,26 @@
 
 Backend API para la aplicación Frutolandia desarrollado con Spring Boot 3.3.5
 
+## 🚀 Despliegue Rápido
+
+### Requisitos
+- Java 21
+- Maven 3.x
+
+### Comandos de Despliegue
+
+```bash
+# Opción 1: Ejecutar directamente con Maven
+mvn spring-boot:run
+
+# Opción 2: Compilar y ejecutar el JAR
+mvn clean package
+java -jar target/frutolandia-backend-1.0.0.jar
+```
+
+**Acceso**: http://localhost:8080  
+**Consola H2**: http://localhost:8080/h2-console (URL: `jdbc:h2:mem:testdb`, Usuario: `sa`, Sin contraseña)
+
 ## Características
 
 - **Gestión de Usuarios**: Crear, actualizar, eliminar y consultar usuarios
