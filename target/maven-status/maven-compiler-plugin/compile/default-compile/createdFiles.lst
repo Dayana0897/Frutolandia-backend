@@ -1,9 +1,14 @@
+com\frutolandia\exception\DuplicateResourceException.class
+com\frutolandia\dto\ErrorResponse.class
 com\frutolandia\controller\ProductController.class
-com\frutolandia\FrutollandiaBackendApplication.class
+com\frutolandia\exception\BadRequestException.class
+com\frutolandia\FrutolandiaBackendApplication.class
 com\frutolandia\service\UserService.class
 com\frutolandia\config\CorsConfig.class
 com\frutolandia\model\User$Role.class
 com\frutolandia\controller\UserController.class
+com\frutolandia\exception\GlobalExceptionHandler.class
+com\frutolandia\exception\ResourceNotFoundException.class
 com\frutolandia\service\ProductService.class
 com\frutolandia\model\User.class
 com\frutolandia\model\Product.class

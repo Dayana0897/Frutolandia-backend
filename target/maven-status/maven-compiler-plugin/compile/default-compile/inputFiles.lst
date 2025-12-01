@@ -1,7 +1,12 @@
 C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\config\CorsConfig.java
 C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\controller\ProductController.java
 C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\controller\UserController.java
-C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\FrutollandiaBackendApplication.java
+C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\dto\ErrorResponse.java
+C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\exception\BadRequestException.java
+C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\exception\DuplicateResourceException.java
+C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\exception\GlobalExceptionHandler.java
+C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\exception\ResourceNotFoundException.java
+C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\FrutolandiaBackendApplication.java
 C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\model\Product.java
 C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\model\User.java
 C:\Users\dayan\OneDrive\Documentos\TFM Atrium\Frutolandia-TFM\Frutolandia-backend\src\main\java\com\frutolandia\repository\ProductRepository.java
