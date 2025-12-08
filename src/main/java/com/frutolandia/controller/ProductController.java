@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * Proporciona endpoints para operaciones CRUD de productos incluyendo
  * creación, consulta, actualización y eliminación. También incluye
  * funcionalidad de búsqueda por nombre.
+ * Los endpoints de modificación requieren rol ADMIN.
  * </p>
  *
  * @author Frutolandia Team
@@ -31,11 +33,13 @@ public class ProductController {
 
     /**
      * Crea un nuevo producto.
+     * Solo accesible para administradores.
      *
      * @param product el producto a crear (validado)
      * @return ResponseEntity con el producto creado y código HTTP 201 (CREATED)
      */
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Product> createProduct(@Valid @RequestBody Product product) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.createProduct(product));
     }
@@ -75,6 +79,7 @@ public class ProductController {
 
     /**
      * Actualiza un producto existente.
+     * Solo accesible para administradores.
      *
      * @param id el identificador del producto a actualizar
      * @param productDetails los nuevos datos del producto (validados)
@@ -82,18 +87,21 @@ public class ProductController {
      * @throws com.frutolandia.exception.ResourceNotFoundException si el producto no existe
      */
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @Valid @RequestBody Product productDetails) {
         return ResponseEntity.ok(productService.updateProduct(id, productDetails));
     }
 
     /**
      * Elimina un producto.
+     * Solo accesible para administradores.
      *
      * @param id el identificador del producto a eliminar
      * @return ResponseEntity con código HTTP 204 (NO CONTENT)
      * @throws com.frutolandia.exception.ResourceNotFoundException si el producto no existe
      */
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();

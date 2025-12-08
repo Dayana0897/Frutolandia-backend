@@ -24,6 +24,7 @@ MERGE INTO products (id, name, price, ingredients, description, stock_quantity) 
 
 -- Insertar datos iniciales de usuarios (solo si no existen)
 -- Nota: Se usa MERGE para evitar duplicados
+-- Contraseñas hasheadas con BCrypt (admin123 y user123)
 MERGE INTO users (id, name, email, password, role) KEY(email) VALUES
-(1, 'Admin Usuario', 'admin@frutolandia.com', 'admin123', 'ADMIN'),
-(2, 'Usuario Cliente', 'cliente@frutolandia.com', 'user123', 'USER');
+(1, 'Admin Usuario', 'admin@frutolandia.com', '$2a$10$mZnx5mS/43jCcUjL2S0Ojeb5K683qPeNcu1kHZ16UVMstrzxX713u', 'ADMIN'),
+(2, 'Usuario Cliente', 'cliente@frutolandia.com', '$2a$10$w/4vObPSrx6/nKRtS3xok.th8bPc1AvUFqXkTJ0Tzxa4Ge1g44x02', 'USER');
