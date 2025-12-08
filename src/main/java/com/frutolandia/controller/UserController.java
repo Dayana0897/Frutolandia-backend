@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
  * Proporciona endpoints para operaciones CRUD de usuarios incluyendo
  * creación, consulta por ID, consulta por email, actualización y eliminación.
  * Incluye validación de duplicados de email.
+ * Todos los endpoints requieren rol ADMIN.
  * </p>
  *
  * @author Frutolandia Team
@@ -25,6 +27,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ADMIN')")
 public class UserController {
 
     private final UserService userService;

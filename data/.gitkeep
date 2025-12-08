@@ -1,2 +1,0 @@
-# Este directorio contiene la base de datos H2 persistente
-# Los archivos .db se ignoran en .gitignore pero esta carpeta se mantiene en el repositorio
