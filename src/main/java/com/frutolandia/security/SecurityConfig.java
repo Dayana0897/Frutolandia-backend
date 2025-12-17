@@ -56,6 +56,9 @@ public class SecurityConfig {
                         // Endpoints de carrito (requieren autenticación)
                         .requestMatchers("/api/cart/**").authenticated()
                         
+                        // Endpoints de favoritos (requieren autenticación)
+                        .requestMatchers("/api/users/favorites/**").authenticated()
+                        
                         // Endpoints de administración
                         .requestMatchers(HttpMethod.POST, "/api/products/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN")
@@ -92,9 +95,8 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(passwordEncoder());
         authProvider.setUserDetailsService(userDetailsService);
-        authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
 
