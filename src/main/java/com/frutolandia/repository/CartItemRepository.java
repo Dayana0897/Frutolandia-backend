@@ -1,7 +1,6 @@
 package com.frutolandia.repository;
 
 import com.frutolandia.model.CartItem;
-import com.frutolandia.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
