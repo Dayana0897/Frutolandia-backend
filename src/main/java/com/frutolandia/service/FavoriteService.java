@@ -85,6 +85,8 @@ public class FavoriteService {
         Favorite favorite = favoriteRepository.findByUserIdAndProductId(user.getId(), productId)
             .orElseThrow(() -> new ResourceNotFoundException("Favorito no encontrado"));
         
-        favoriteRepository.delete(favorite);
+        @SuppressWarnings("null")
+        Favorite favoriteToDelete = favorite;
+        favoriteRepository.delete(favoriteToDelete);
     }
 }

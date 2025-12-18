@@ -76,7 +76,9 @@ public class CartService {
                 .orElseThrow(() -> new RuntimeException("Ítem no encontrado en el carrito"));
 
         if (quantity <= 0) {
-            cartItemRepository.delete(cartItem);
+            @SuppressWarnings("null")
+            CartItem itemToDelete = cartItem;
+            cartItemRepository.delete(itemToDelete);
             return null;
         }
 

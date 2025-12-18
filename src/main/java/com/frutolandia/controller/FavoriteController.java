@@ -5,6 +5,7 @@ import com.frutolandia.service.FavoriteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,7 +51,7 @@ public class FavoriteController {
      */
     @PostMapping("/{productId}")
     public ResponseEntity<Product> addFavorite(
-            @PathVariable Long productId,
+            @PathVariable @NonNull Long productId,
             Authentication authentication) {
         String email = authentication.getName();
         Product product = favoriteService.addFavorite(email, productId);
@@ -66,7 +67,7 @@ public class FavoriteController {
      */
     @DeleteMapping("/{productId}")
     public ResponseEntity<Void> removeFavorite(
-            @PathVariable Long productId,
+            @PathVariable @NonNull Long productId,
             Authentication authentication) {
         String email = authentication.getName();
         favoriteService.removeFavorite(email, productId);
