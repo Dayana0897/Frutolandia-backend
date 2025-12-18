@@ -8,6 +8,7 @@ import com.frutolandia.repository.CartItemRepository;
 import com.frutolandia.repository.ProductRepository;
 import com.frutolandia.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,7 +47,7 @@ public class CartService {
      * Añade un producto al carrito o actualiza su cantidad si ya existe.
      */
     @Transactional
-    public CartItemResponse addToCart(Long userId, Long productId, Integer quantity) {
+    public CartItemResponse addToCart(@NonNull Long userId, @NonNull Long productId, Integer quantity) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
         
@@ -70,7 +71,7 @@ public class CartService {
      * Actualiza la cantidad de un ítem en el carrito.
      */
     @Transactional
-    public CartItemResponse updateCartItem(Long userId, Long productId, Integer quantity) {
+    public CartItemResponse updateCartItem(@NonNull Long userId, @NonNull Long productId, Integer quantity) {
         CartItem cartItem = cartItemRepository.findByUserIdAndProductId(userId, productId)
                 .orElseThrow(() -> new RuntimeException("Ítem no encontrado en el carrito"));
 
