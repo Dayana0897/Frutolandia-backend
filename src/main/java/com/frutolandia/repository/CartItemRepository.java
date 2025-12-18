@@ -33,6 +33,11 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
     void deleteByUserId(Long userId);
     
     /**
+     * Elimina todos los ítems del carrito de un producto.
+     */
+    void deleteByProductId(Long productId);
+    
+    /**
      * Elimina un ítem específico del carrito.
      */
     void deleteByUserIdAndProductId(Long userId, Long productId);

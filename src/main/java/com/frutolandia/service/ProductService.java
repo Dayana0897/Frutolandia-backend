@@ -2,6 +2,8 @@ package com.frutolandia.service;
 
 import com.frutolandia.exception.ResourceNotFoundException;
 import com.frutolandia.model.Product;
+import com.frutolandia.repository.CartItemRepository;
+import com.frutolandia.repository.FavoriteRepository;
 import com.frutolandia.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
@@ -28,6 +30,8 @@ import java.util.List;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final CartItemRepository cartItemRepository;
+    private final FavoriteRepository favoriteRepository;
 
     /**
      * Crea un nuevo producto en la base de datos.
@@ -111,14 +115,22 @@ public class ProductService {
 
     /**
      * Elimina un producto de la base de datos.
+     * Primero elimina todos los items del carrito y favoritos asociados.
      *
      * @param id el identificador del producto a eliminar
      * @throws ResourceNotFoundException si el producto no existe
      */
+    @Transactional
     public void deleteProduct(@NonNull Long id) {
         if (!productRepository.existsById(id)) {
             throw new ResourceNotFoundException("Producto", "id", id);
         }
+        
+        // Eliminar primero los registros relacionados
+        cartItemRepository.deleteByProductId(id);
+        favoriteRepository.deleteByProductId(id);
+        
+        // Ahora sí eliminar el producto
         productRepository.deleteById(id);
     }
 }

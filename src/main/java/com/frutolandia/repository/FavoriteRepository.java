@@ -45,4 +45,18 @@ public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
      * @param productId el ID del producto
      */
     void deleteByUserIdAndProductId(Long userId, Long productId);
+    
+    /**
+     * Elimina todos los favoritos de un usuario.
+     * 
+     * @param userId el ID del usuario
+     */
+    void deleteByUserId(Long userId);
+    
+    /**
+     * Elimina todos los favoritos de un producto.
+     * 
+     * @param productId el ID del producto
+     */
+    void deleteByProductId(Long productId);
 }
