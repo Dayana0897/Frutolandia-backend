@@ -104,7 +104,9 @@ public class ProductService {
             product.setStockQuantity(productDetails.getStockQuantity());
         }
         
-        return productRepository.save(product);
+        @SuppressWarnings("null")
+        Product savedProduct = productRepository.save(product);
+        return savedProduct;
     }
 
     /**

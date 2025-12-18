@@ -119,7 +119,9 @@ public class UserService {
             user.setRole(userDetails.getRole());
         }
         
-        return userRepository.save(user);
+        @SuppressWarnings("null")
+        User savedUser = userRepository.save(user);
+        return savedUser;
     }
 
     /**

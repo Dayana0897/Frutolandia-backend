@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,7 +53,7 @@ public class UserController {
      * @throws com.frutolandia.exception.ResourceNotFoundException si el usuario no existe
      */
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable @NonNull Long id) {
         return ResponseEntity.ok(userService.getUserById(id));
     }
 
@@ -88,7 +89,7 @@ public class UserController {
      * @throws com.frutolandia.exception.DuplicateResourceException si el nuevo email ya está en uso
      */
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @Valid @RequestBody User userDetails) {
+    public ResponseEntity<User> updateUser(@PathVariable @NonNull Long id, @RequestBody @Valid User userDetails) {
         return ResponseEntity.ok(userService.updateUser(id, userDetails));
     }
 
@@ -100,7 +101,7 @@ public class UserController {
      * @throws com.frutolandia.exception.ResourceNotFoundException si el usuario no existe
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteUser(@PathVariable @NonNull Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
     }

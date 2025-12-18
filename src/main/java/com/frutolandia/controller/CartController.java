@@ -55,6 +55,7 @@ public class CartController {
      * Añade un producto al carrito.
      */
     @PostMapping
+    @SuppressWarnings("null")
     public ResponseEntity<?> addToCart(
             @RequestHeader("Authorization") String authHeader,
             @RequestBody CartItemRequest request) {
@@ -77,6 +78,7 @@ public class CartController {
      * Actualiza la cantidad de un ítem en el carrito.
      */
     @PutMapping("/{productId}")
+    @SuppressWarnings("null")
     public ResponseEntity<?> updateCartItem(
             @RequestHeader("Authorization") String authHeader,
             @PathVariable Long productId,
