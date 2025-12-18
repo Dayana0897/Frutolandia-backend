@@ -33,6 +33,5 @@ build/
 .vscode/
 
 ### H2 Database Files ###
-/data/*.db
-/data/*.trace.db
-/data/*.lock.db
+data/
+!data/.gitkeep
