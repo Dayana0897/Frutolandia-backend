@@ -3,6 +3,8 @@ package com.frutolandia.service;
 import com.frutolandia.exception.DuplicateResourceException;
 import com.frutolandia.exception.ResourceNotFoundException;
 import com.frutolandia.model.User;
+import com.frutolandia.repository.CartItemRepository;
+import com.frutolandia.repository.FavoriteRepository;
 import com.frutolandia.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
@@ -29,6 +31,8 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final CartItemRepository cartItemRepository;
+    private final FavoriteRepository favoriteRepository;
 
     /**
      * Crea un nuevo usuario en la base de datos.
@@ -126,14 +130,22 @@ public class UserService {
 
     /**
      * Elimina un usuario de la base de datos.
+     * Primero elimina todos los items del carrito y favoritos asociados.
      *
      * @param id el identificador del usuario a eliminar
      * @throws ResourceNotFoundException si el usuario no existe
      */
+    @Transactional
     public void deleteUser(@NonNull Long id) {
         if (!userRepository.existsById(id)) {
             throw new ResourceNotFoundException("Usuario", "id", id);
         }
+        
+        // Eliminar primero los registros relacionados
+        cartItemRepository.deleteByUserId(id);
+        favoriteRepository.deleteByUserId(id);
+        
+        // Ahora sí eliminar el usuario
         userRepository.deleteById(id);
     }
 }
