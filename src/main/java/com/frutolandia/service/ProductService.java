@@ -4,6 +4,7 @@ import com.frutolandia.exception.ResourceNotFoundException;
 import com.frutolandia.model.Product;
 import com.frutolandia.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,7 +35,7 @@ public class ProductService {
      * @param product el producto a crear
      * @return el producto creado con su ID generado
      */
-    public Product createProduct(Product product) {
+    public Product createProduct(@NonNull Product product) {
         return productRepository.save(product);
     }
 
@@ -46,7 +47,7 @@ public class ProductService {
      * @throws ResourceNotFoundException si el producto no existe
      */
     @Transactional(readOnly = true)
-    public Product getProductById(Long id) {
+    public Product getProductById(@NonNull Long id) {
         return productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Producto", "id", id));
     }
@@ -83,7 +84,7 @@ public class ProductService {
      * @return el producto actualizado
      * @throws ResourceNotFoundException si el producto no existe
      */
-    public Product updateProduct(Long id, Product productDetails) {
+    public Product updateProduct(@NonNull Long id, Product productDetails) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Producto", "id", id));
         
@@ -112,7 +113,7 @@ public class ProductService {
      * @param id el identificador del producto a eliminar
      * @throws ResourceNotFoundException si el producto no existe
      */
-    public void deleteProduct(Long id) {
+    public void deleteProduct(@NonNull Long id) {
         if (!productRepository.existsById(id)) {
             throw new ResourceNotFoundException("Producto", "id", id);
         }

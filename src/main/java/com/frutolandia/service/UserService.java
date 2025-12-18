@@ -5,6 +5,7 @@ import com.frutolandia.exception.ResourceNotFoundException;
 import com.frutolandia.model.User;
 import com.frutolandia.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,7 +56,7 @@ public class UserService {
      * @throws ResourceNotFoundException si el usuario no existe
      */
     @Transactional(readOnly = true)
-    public User getUserById(Long id) {
+    public User getUserById(@NonNull Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario", "id", id));
     }
@@ -96,7 +97,7 @@ public class UserService {
      * @throws ResourceNotFoundException si el usuario no existe
      * @throws DuplicateResourceException si el nuevo email ya está en uso
      */
-    public User updateUser(Long id, User userDetails) {
+    public User updateUser(@NonNull Long id, User userDetails) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Usuario", "id", id));
         
@@ -127,7 +128,7 @@ public class UserService {
      * @param id el identificador del usuario a eliminar
      * @throws ResourceNotFoundException si el usuario no existe
      */
-    public void deleteUser(Long id) {
+    public void deleteUser(@NonNull Long id) {
         if (!userRepository.existsById(id)) {
             throw new ResourceNotFoundException("Usuario", "id", id);
         }

@@ -9,6 +9,7 @@ import com.frutolandia.repository.FavoriteRepository;
 import com.frutolandia.repository.ProductRepository;
 import com.frutolandia.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,7 +53,7 @@ public class FavoriteService {
      * @return el producto agregado
      */
     @Transactional
-    public Product addFavorite(String email, Long productId) {
+    public Product addFavorite(String email, @NonNull Long productId) {
         User user = userRepository.findByEmail(email)
             .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con email: " + email));
         
@@ -77,7 +78,7 @@ public class FavoriteService {
      * @param productId el ID del producto
      */
     @Transactional
-    public void removeFavorite(String email, Long productId) {
+    public void removeFavorite(String email, @NonNull Long productId) {
         User user = userRepository.findByEmail(email)
             .orElseThrow(() -> new ResourceNotFoundException("Usuario no encontrado con email: " + email));
         
