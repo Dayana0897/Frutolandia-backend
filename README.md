@@ -5,13 +5,14 @@ Backend API para la aplicación Frutolandia desarrollado con Spring Boot 3.3.5
 ## 🚀 Despliegue Rápido
 
 ### Requisitos
-- Java 21
-- Maven 3.x
+- Java 21 (JDK 21 o superior)
+- Maven 3.8+
 
 ### Comandos de Despliegue
 
 ```bash
 # Opción 1: Ejecutar directamente con Maven
+mvn clean install
 mvn spring-boot:run
 
 # Opción 2: Compilar y ejecutar el JAR
@@ -20,7 +21,10 @@ java -jar target/frutolandia-backend-1.0.0.jar
 ```
 
 **Acceso**: http://localhost:8080  
-**Consola H2**: http://localhost:8080/h2-console (URL: `jdbc:h2:mem:testdb`, Usuario: `sa`, Sin contraseña)
+**Consola H2**: http://localhost:8080/h2-console
+- URL JDBC: `jdbc:h2:file:./data/frutolandia`
+- Usuario: `sa`
+- Contraseña: (dejar en blanco)
 
 ## Características
 
